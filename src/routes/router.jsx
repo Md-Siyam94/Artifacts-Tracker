@@ -23,7 +23,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/all-artifacts",
-                element: <AllArtifacts></AllArtifacts>
+                element: <AllArtifacts></AllArtifacts>,
+                loader: ()=> fetch('http://localhost:5000/artifacts')
+
             },
             {
                 path: "/add-artifacts",
