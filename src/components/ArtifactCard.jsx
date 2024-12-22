@@ -1,10 +1,11 @@
 import { BiLike } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 
 
 const ArtifactCard = ({ artifact }) => {
     console.log(artifact)
-    const {artifactImage, artifactName, historicalContext, likeCount } = artifact || {}
+    const {artifactImage, artifactName, historicalContext, likeCount, _id } = artifact || {}
     return (
         <div className="rounded-lg bg-base-100 mb-10 shadow-xl">
             <figure>
@@ -25,7 +26,7 @@ const ArtifactCard = ({ artifact }) => {
                         </p>
                         <p> {likeCount}</p>
                     </div>
-                    <div className="btn px-5 ">See Details</div>
+                    <Link to={`/details/${_id}`} className="btn px-5 ">See Details</Link>
                 </div>
             </div>
         </div>

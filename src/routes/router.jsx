@@ -10,6 +10,7 @@ import SignUp from "../pages/SignUp";
 import MyArtifacts from "../pages/MyArtifacts";
 import LinkedArtifacts from "../pages/LikedArtifacts";
 import PrivetRoute from "../provider/PrivetRoute";
+import ArtifactDetails from "../pages/ArtifactDetails";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
                 element: <AllArtifacts></AllArtifacts>,
                 loader: ()=> fetch('http://localhost:5000/artifacts')
 
+            },
+            {
+                path: "/details/:id",
+                element: <ArtifactDetails></ArtifactDetails>,
+                loader: ({params})=> fetch(`http://localhost:5000/artifacts/details/${params.id}`)
             },
             {
                 path: "/add-artifacts",

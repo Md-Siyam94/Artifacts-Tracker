@@ -24,8 +24,9 @@ const AddArtifacts = () => {
         console.log({ artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail });
     }
     return (
-        <div>
-            <h1>Add your Artifact</h1>
+        <div className="my-16">
+            <h1 className="text-5xl font-semibold  text-center">Add your Artifact</h1>
+            <p className="w-[70%] mx-auto text-center my-4">Do you own an artifact with historical significance? Share its story with the world! Our platform allows you to add artifacts to our growing collection, helping preserve and showcase pieces of history for future generations.</p>
             <div className="card bg-base-100 px-5 w-full mx-auto max-w-[65%] shrink-0  shadow-2xl">
                 <form onSubmit={handleAddArtifact} className="card-body">
                     <div className="form-control">
