@@ -1,8 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SignInWithGoogle from "../components/SignInWithGoogle";
+import { useContext, useState } from "react";
+import { AuthContex } from "../provider/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
+    const { loginUser } = useContext(AuthContex)
+    const [showPass, setShowPass] = useState(false)
+    const location= useLocation()
+   const navigate = useNavigate()
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        const form = new FormData(e.target);
+        const email = form.get('email');
+        const password = form.get('password')
+
+
+        loginUser(email, password)
+            .then(() => { 
+                navigate(location?.state ? location?.state : "/")
+            })
+            .catch(err => {
+                console.log('error form login', err.message);
+            })
+    }
     return (
         <div className="pt-10 bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row px-20">
@@ -14,18 +38,24 @@ const Login = () => {
                     </p>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input type={showPass ? "text" : "password"} name="password" placeholder="password" className="input input-bordered relative " required />
+
+                            <button onClick={() => setShowPass(!showPass)} className="absolute mt-12 pt-1 ml-72">
+                                {
+                                    showPass ? <FaEye /> : <FaEyeSlash />
+                                }
+                            </button>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

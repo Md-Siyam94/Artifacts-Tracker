@@ -12,7 +12,7 @@ function MainLayout() {
       <header className="">
         <Navbar></Navbar>
       </header>
-      <main className="max-w-7xl mx-auto min-h-[calc(100vh-440px)]">
+      <main className="max-w-7xl mx-auto min-h-[calc(100vh-420px)]">
         <Outlet></Outlet>
       </main>
       <footer>

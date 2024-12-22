@@ -4,14 +4,30 @@ import { AuthContex } from "../provider/AuthProvider";
 import { GiCompass } from "react-icons/gi";
 
 const Navbar = () => {
-    const user = useContext(AuthContex);
+    const { user, logOutUser } = useContext(AuthContex);
 
 
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => { })
+            .catch(err => {
+                console.log('error from logout', err.message)
+            })
+    }
 
     const links = <>
-         <li><Link to={"/"}>Home</Link></li>                     
-         <li><Link to={"/all-artifacts"}>All Artifacts</Link></li>
-         <li><Link to={"/add-artifacts"}>Add Artifacts</Link></li>         
+        <li><Link to={"/"}>Home</Link></li>
+        <li><Link to={"/all-artifacts"}>All Artifacts</Link></li>
+        <li><Link to={"/add-artifacts"}>Add Artifacts</Link></li>
+        <li><Link to={"/add-artifacts"}><div className="dropdown dropdown-end  dropdown-hover">
+            <div tabIndex={0} role="button" className=" ">My profile</div>
+            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-56 p-2 shadow">
+                <li><Link to={"/my-artifacts"}>My Artifacts</Link></li>
+                <li><Link to={"/linked-artifacts"}>Liked Artifacts</Link></li>
+            </ul>
+        </div>
+        </Link>
+        </li>
     </>
     return (
         <div className="navbar bg-green-400 py-3 px-10">
@@ -34,21 +50,35 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                       {links}
+                        {links}
                     </ul>
                 </div>
-                <Link to={"/"} className=" flex gap-2 font-semibold text-2xl items-center"><GiCompass className="text-5xl text-red-600"/>ArtifactsTracker</Link>
+                <Link to={"/"} className=" flex gap-2 font-semibold text-3xl items-center"><GiCompass className="text-5xl text-red-600" />ArtifactsTracker</Link>
             </div>
-            
+
             <div className="navbar-end gap-2">
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 font-semibold">
-                    {links}
-                </ul>
-            </div >
-            {user?.name}
-                <Link to={"/login"} className="btn">Login</Link>
-                <Link to={"/sign-up"} className="btn">Sign up</Link>
+                <div className="navbar-center hidden lg:flex ">
+                    <ul className="menu  menu-horizontal px-1 font-semibold">
+                        {links}
+                    </ul>
+                </div >
+
+                <div>
+                    {
+                        user ? <div> <div className="dropdown dropdown-end  dropdown-hover">
+                            <div tabIndex={0} role="button" className=""> <img
+                                className="h-10 w-10 rounded-full object-cover"
+                                src={user?.photoURL}
+                                alt="" /></div>
+                            <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                                <li><a>{user?.displayName}</a></li>
+                                <li><button onClick={handleLogOut}>Log out</button></li>
+                            </ul>
+                        </div>
+                        </div> : <div className="flex gap-2"><Link to={"/login"} className="btn">Login</Link>
+                            <Link to={"/sign-up"} className="btn">Sign up</Link></div>
+                    }
+                </div>
             </div>
         </div>
     );
