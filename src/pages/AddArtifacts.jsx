@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContex } from "../provider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const AddArtifacts = () => {
@@ -21,10 +22,29 @@ const AddArtifacts = () => {
         const presentLocation = form.get('presentLocation');
         const adderName = form.get('adderName');
         const adderEmail = form.get('adderEmail');
+        const likeCount = 0
 
-        console.log({ artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail });
+        const artifact = { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount };
 
-        axios.post("")
+        // console.log(artifact);
+        axios.post("http://localhost:5000/artifacts", artifact )
+        .then(res=> {
+            console.log('artifact save on database',res.data);
+           if(res?.data?.insertedId){
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your Artifact has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            
+              });
+           }
+           
+           
+        })
+        
+        
     }
     return (
         <div className="my-16">
@@ -98,13 +118,13 @@ const AddArtifacts = () => {
                         <label className="label">
                             <span className="label-text font-semibold"> Artifact adder name <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="adderName" value={user?.displayName} className="input input-bordered" required />
+                        <input type="text" name="adderName" readOnly defaultValue={user?.displayName} className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Artifact adder email <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="adderEmail" value={user?.email} className="input input-bordered" required />
+                        <input type="text" name="adderEmail" readOnly defaultValue={user?.email} className="input input-bordered" required />
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Add Artifact</button>

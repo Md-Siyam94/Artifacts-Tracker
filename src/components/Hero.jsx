@@ -16,7 +16,7 @@ const Hero = () => {
     return (
         <div>
             <Swiper
-                style={{ height: "550px", width: "100%",   }}
+                style={{ height: "550px", width: "100%", }}
                 slidesPerView={1}
                 spaceBetween={30}
                 centeredSlides={true}
@@ -33,8 +33,16 @@ const Hero = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img className='w-full object-cover ' src={SliderImg1} alt="" />
-                    <h3 className='absolute text-3xl '>hello</h3>
+                    <div>
+                        <img className='w-full object-cover relative -z-10' src={SliderImg1} alt="" />
+                        {/* <div className='w-full bg-cover' style={{backgroundImage: `url(${SliderImg1})`}}> */}
+
+                        {/* </div> */}
+                        <div className="flex flex-col items-center justify-center h-[300px] bg-gray-100 rounded-lg p-5 shadow-md z-10">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-3">Ancient Vase</h2>
+                            <p className="text-gray-600">A rare vase from the Roman Empire.</p>
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='object-cover w-full' src={SliderImg2} alt="" />
@@ -44,7 +52,7 @@ const Hero = () => {
                     <img className='w-full object-cover ' src={SliderImg3} alt="" />
                     <h3 className='absolute text-3xl '>hello</h3>
                 </SwiperSlide>
-                
+
 
             </Swiper>
         </div>

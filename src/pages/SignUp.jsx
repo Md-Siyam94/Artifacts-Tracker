@@ -3,6 +3,7 @@ import SignInWithGoogle from "../components/SignInWithGoogle";
 import { useContext, useState } from "react";
 import { AuthContex } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
@@ -30,6 +31,23 @@ const SignUp = () => {
                 updateUserProfile(updateUser)
                     .then(() => {
                         navigate('/')
+                        Swal.fire({
+                            title: "Custom animation with Animate.css",
+                            showClass: {
+                              popup: `
+                                animate__animated
+                                animate__fadeInUp
+                                animate__faster
+                              `
+                            },
+                            hideClass: {
+                              popup: `
+                                animate__animated
+                                animate__fadeOutDown
+                                animate__faster
+                              `
+                            }
+                          });
                     })
                     .catch(err => console.log("error from updateProfile", err.message))
             })
