@@ -5,7 +5,9 @@ import { GiCompass } from "react-icons/gi";
 
 const Navbar = () => {
     const { user, logOutUser } = useContext(AuthContex);
+    const {displayName} = user || {}
 
+   
 
     const handleLogOut = () => {
         logOutUser()
@@ -71,7 +73,7 @@ const Navbar = () => {
                                 src={user?.photoURL}
                                 alt="" /></div>
                             <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                <li><a>{user?.displayName}</a></li>
+                                <li><Link>{displayName}</Link></li>
                                 <li><button onClick={handleLogOut}>Log out</button></li>
                             </ul>
                         </div>

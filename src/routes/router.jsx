@@ -41,6 +41,7 @@ const router = createBrowserRouter([
             {
                 path: "/my-artifacts",
                 element: <PrivetRoute><MyArtifacts></MyArtifacts></PrivetRoute>
+               
             },
             {
                 path: "/linked-artifacts",

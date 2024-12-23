@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 
 const ArtifactCard = ({ artifact }) => {
-    console.log(artifact)
+    // console.log(artifact)
     const {artifactImage, artifactName, historicalContext, likeCount, _id } = artifact || {}
     return (
-        <div className="rounded-lg bg-base-100 mb-10 shadow-xl">
+        < div className="rounded-lg bg-base-100 mb-10 shadow-xl">
             <figure>
                 <img
                 className="h-52 w-full rounded-lg "

@@ -26,11 +26,11 @@ const AddArtifacts = () => {
 
         const artifact = { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount };
 
-        // console.log(artifact);
+        console.log(artifact);
         axios.post("http://localhost:5000/artifacts", artifact )
         .then(res=> {
             console.log('artifact save on database',res.data);
-           if(res?.data?.insertedId){
+           if(res.data?.insertedId){
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -72,15 +72,15 @@ const AddArtifacts = () => {
                             </div>
                             <select name="artifactType" className="select select-bordered w-full max-w-xs">
                                 <option disabled selected>Choose Artifact Type</option>
-                                <option value={"Tools"}>Tools</option>
-                                <option value={"Weapons"}>Weapons</option>
-                                <option value={" Documents"}> Documents</option>
-                                <option value={"Writings"}>Writings</option>
-                                <option value={"Coins"}>Coins</option>
-                                <option value={"Architectural Elements"}>Architectural Elements </option>
-                                <option value={" Sacred "}> Sacred</option>
-                                <option value={"Jewelry"}>Jewelry</option>
-                                <option value={"Pottery "}>Pottery </option>
+                                <option defaultValue={"Tools"}>Tools</option>
+                                <option defaultValue={"Weapons"}>Weapons</option>
+                                <option defaultValue={" Documents"}> Documents</option>
+                                <option defaultValue={"Writings"}>Writings</option>
+                                <option defaultValue={"Coins"}>Coins</option>
+                                <option defaultValue={"Architectural Elements"}>Architectural Elements </option>
+                                <option defaultValue={" Sacred "}> Sacred</option>
+                                <option defaultValue={"Jewelry"}>Jewelry</option>
+                                <option defaultValue={"Pottery "}>Pottery </option>
                             </select>
                         </label>
                     </div>

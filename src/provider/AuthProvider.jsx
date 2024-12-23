@@ -12,18 +12,18 @@ const AuthProvider = ({ children }) => {
 
 
 
-    
+
 
     const signUpUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const updateUserProfile = ({displayName, photoURL})=>{
-        console.log(displayName)
-        return updateProfile(auth.currentUser, {displayName, photoURL})
+    const updateUserProfile = (userData) => {
+        // console.log(displayName)
+        return updateProfile(auth.currentUser, userData)
     }
 
-    const loginUser = (email, password)=>{
+    const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -31,14 +31,14 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     }
 
-    const logOutUser = ()=>{
+    const logOutUser = () => {
         return signOut(auth)
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-           
+
             setLoading(false);
             console.log('cctv lagaisi', currentUser);
         })
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
         loginUser,
         loginWithGoogle,
         logOutUser,
-        
+
 
     }
     return (

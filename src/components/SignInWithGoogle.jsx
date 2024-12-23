@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContex } from "../provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const SignInWithGoogle = () => {
     const {user, loginWithGoogle} = useContext(AuthContex);
@@ -13,23 +13,7 @@ const SignInWithGoogle = () => {
         loginWithGoogle()
         .then(()=> {
             navigate(location?.state ? location?.state : "/")
-            Swal.fire({
-                title: `WelCome ${user?.displayName}`,
-                showClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                  `
-                },
-                hideClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                  `
-                }
-              });
+           
         })
         .catch(err=> {
             console.log('error from google login',err);

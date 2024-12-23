@@ -3,12 +3,12 @@ import SignInWithGoogle from "../components/SignInWithGoogle";
 import { useContext, useState } from "react";
 import { AuthContex } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Swal from "sweetalert2";
+
 
 
 const SignUp = () => {
 
-    const { signUpUser, updateUserProfile } = useContext(AuthContex)
+    const {user, signUpUser, updateUserProfile } = useContext(AuthContex)
     const navigate = useNavigate()
     const [showPass, setShowPass] = useState(false)
 
@@ -22,32 +22,14 @@ const SignUp = () => {
         const photoURL = form.get('photoURL');
         const password = form.get('password');
 
-        const updateUser = { name, photoURL };
+        // const updateUser = { name , photoURL };
         // console.log(updateUser)
 
         signUpUser(email, password)
             .then(() => {
-                // console.log('user from signup', data)
-                updateUserProfile(updateUser)
+                updateUserProfile({displayName: name , photoURL: photoURL})
                     .then(() => {
-                        navigate('/')
-                        Swal.fire({
-                            title: "Custom animation with Animate.css",
-                            showClass: {
-                              popup: `
-                                animate__animated
-                                animate__fadeInUp
-                                animate__faster
-                              `
-                            },
-                            hideClass: {
-                              popup: `
-                                animate__animated
-                                animate__fadeOutDown
-                                animate__faster
-                              `
-                            }
-                          });
+                          navigate("/")
                     })
                     .catch(err => console.log("error from updateProfile", err.message))
             })
@@ -98,7 +80,7 @@ const SignUp = () => {
                                 </button>
                             
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">
