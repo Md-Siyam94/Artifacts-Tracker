@@ -11,12 +11,13 @@ import MyArtifacts from "../pages/MyArtifacts";
 import LinkedArtifacts from "../pages/LikedArtifacts";
 import PrivetRoute from "../provider/PrivetRoute";
 import ArtifactDetails from "../pages/ArtifactDetails";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        //   errorElement: <div>error</div>,
+        //   errorElement: <Error></Error>,
         children: [
             {
                 path: "",
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/details/:id",
-                element: <ArtifactDetails></ArtifactDetails>,
+                element: <PrivetRoute><ArtifactDetails></ArtifactDetails></PrivetRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/artifacts/details/${params.id}`)
             },
             {

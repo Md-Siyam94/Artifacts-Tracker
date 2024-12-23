@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContex } from "../provider/AuthProvider";
+import axios from "axios";
 
 
 const AddArtifacts = () => {
@@ -22,6 +23,8 @@ const AddArtifacts = () => {
         const adderEmail = form.get('adderEmail');
 
         console.log({ artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail });
+
+        axios.post("")
     }
     return (
         <div className="my-16">
