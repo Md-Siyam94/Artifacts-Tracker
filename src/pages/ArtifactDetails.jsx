@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { BiLike } from "react-icons/bi";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -8,6 +9,9 @@ const ArtifactDetails = () => {
 
     return (
         <div className="pb-20 pt-16">
+            <Helmet>
+                <title>Artifacts details | ArtifactsTracker</title>
+            </Helmet>
             <h1 className="text-center font-semibold text-5xl ">Artifact details </h1>
             <p className="text-center w-[80%] mx-auto mt-3">Explore the rich history and fascinating details of this artifact. Each piece has a unique journey that offers insights into ancient civilizations, cultural practices, and technological advancements.</p>
             <div className="w-[88%] mx-auto flex items-center gap-4 rounded-lg bg-base-100 mb-10 shadow-xl p-10">

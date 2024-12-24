@@ -1,15 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContex } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet";
 
 
-const AddArtifacts = () => {
+const ArtifactsEditPage = () => {
+    const {user} = useContext(AuthContex)
+    const artifact = useLoaderData()
+    const navigate = useNavigate()
+    
+    const  { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount, _id } = artifact || {}
+    
 
-    const { user } = useContext(AuthContex)
-
-    const handleAddArtifact = (e) => {
+    const handleEditArtifact=(e)=>{
         e.preventDefault();
 
         const form = new FormData(e.target);
@@ -23,50 +28,44 @@ const AddArtifacts = () => {
         const presentLocation = form.get('presentLocation');
         const adderName = form.get('adderName');
         const adderEmail = form.get('adderEmail');
-        const likeCount = 0
 
-        const artifact = { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount };
+      const updatedData = {artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail};
 
-        console.log(artifact);
-        axios.post("http://localhost:5000/artifacts", artifact )
-        .then(res=> {
-            console.log('artifact save on database',res.data);
-           if(res.data?.insertedId){
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your Artifact has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            
-              });
-           }
-           
-           
-        })
-        
-        
+      axios.put(`http://localhost:5000/artifacts/${_id}`, updatedData)
+      .then(res=> {
+       if(res.data.modifiedCount > 0){
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your artifact data has been updated",
+            showConfirmButton: false,
+            timer: 1500
+          });
+       }
+       navigate(`/details/${_id}`)
+      })
     }
     return (
-        <div className="my-16">
+        <div className="my-10">
             <Helmet>
                 <title>Add artifacts | ArtifactsTracker</title>
             </Helmet>
-            <h1 className="text-5xl font-semibold  text-center">Add your Artifact</h1>
-            <p className="w-[70%] mx-auto text-center my-4">Do you own an artifact with historical significance? Share its story with the world! Our platform allows you to add artifacts to our growing collection, helping preserve and showcase pieces of history for future generations.</p>
+            <h1 className="text-3xl  font-semibold ml-10 mb-2">Edit your Artifact</h1>
+            <hr className="mb-6 w-[30%] ml-10 "/>
+            
             <div className="card bg-base-100 px-5 w-full mx-auto max-w-[65%] shrink-0  shadow-2xl">
-                <form onSubmit={handleAddArtifact} className="card-body">
+                <form onSubmit={handleEditArtifact} className="card-body">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Artifact name <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="artifactName" placeholder="Artifact name" className="input input-bordered" required />
+                        <input type="text" name="artifactName" defaultValue={artifactName} placeholder="Artifact name" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Artifact image <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="url" name="artifactImage" placeholder="Artifact photo URL" className="input input-bordered" required />
+                        <input type="url" name="artifactImage" defaultValue={artifactImage} placeholder="Artifact photo URL" className="input input-bordered" required />
                     </div>
                     <div>
                         <label className="form-control w-full max-w-xs">
@@ -74,7 +73,7 @@ const AddArtifacts = () => {
                                 <span className="label-text font-semibold"> Artifact Type <span className="text-red-600">*</span></span>
 
                             </div>
-                            <select name="artifactType" className="select select-bordered w-full max-w-xs">
+                            <select name="artifactType" defaultValue={artifactType} className="select select-bordered w-full max-w-xs">
                                 <option disabled selected>Choose Artifact Type</option>
                                 <option defaultValue={"Tools"}>Tools</option>
                                 <option defaultValue={"Weapons"}>Weapons</option>
@@ -92,31 +91,31 @@ const AddArtifacts = () => {
                         <label className="label">
                             <span className="label-text font-semibold"> Historical Context <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="historicalContext" placeholder="Type historical context " className="input input-bordered" required />
+                        <input type="text" name="historicalContext" defaultValue={historicalContext} placeholder="Type historical context " className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Created At <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="createdAt" placeholder="e.g., '100 BC'" className="input input-bordered" required />
+                        <input type="text" name="createdAt" defaultValue={createdAt} placeholder="e.g., '100 BC'" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Discovered At <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="number" name="discoveredAt" placeholder="e.g., '1799'" className="input input-bordered" required />
+                        <input type="number" name="discoveredAt" defaultValue={discoveredAt} placeholder="e.g., '1799'" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Discovered By <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="discoveredBy" placeholder="Who was discovered the Artifact?" className="input input-bordered" required />
+                        <input type="text" name="discoveredBy"  defaultValue={discoveredBy} placeholder="Who was discovered the Artifact?" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-semibold"> Present Location <span className="text-red-600">*</span></span>
                         </label>
-                        <input type="text" name="presentLocation" placeholder="Write the location of this Artifact" className="input input-bordered" required />
+                        <input type="text" name="presentLocation"  defaultValue={presentLocation} placeholder="Write the location of this Artifact" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -131,7 +130,7 @@ const AddArtifacts = () => {
                         <input type="text" name="adderEmail" readOnly defaultValue={user?.email} className="input input-bordered" required />
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn   bg-teal-500 hover:bg-teal-600 text-white">Add Artifact</button>
+                        <button className="btn bg-teal-500 hover:bg-teal-600 text-white">Update</button>
                     </div>
                 </form>
             </div>
@@ -139,4 +138,4 @@ const AddArtifacts = () => {
     );
 };
 
-export default AddArtifacts;
+export default ArtifactsEditPage;

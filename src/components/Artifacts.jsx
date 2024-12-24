@@ -25,7 +25,7 @@ const Artifacts = () => {
                 }
             </div>
             <div className="w-full flex justify-center">
-               <Link to={"/all-artifacts"}> <button className="py-3 rounded-lg border  px-10 font-semibold bg-yellow-500">See all</button></Link>
+               <Link to={"/all-artifacts"}> <button className="py-3 rounded-lg border  px-10 font-semibold bg-yellow-400 hover:bg-yellow-500">See all</button></Link>
             </div>
         </div>
     );

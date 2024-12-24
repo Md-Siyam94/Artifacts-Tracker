@@ -12,6 +12,7 @@ import LinkedArtifacts from "../pages/LikedArtifacts";
 import PrivetRoute from "../provider/PrivetRoute";
 import ArtifactDetails from "../pages/ArtifactDetails";
 import Error from "../pages/Error";
+import ArtifactsEditPage from "../pages/ArtifactsEditPage";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivetRoute><ArtifactDetails></ArtifactDetails></PrivetRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/artifacts/details/${params.id}`)
+                loader: ({params})=> fetch(`http://localhost:5000/artifacts/${params.id}`)
             },
             {
                 path: "/add-artifacts",
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
             {
                 path: "/linked-artifacts",
                 element: <PrivetRoute><LinkedArtifacts></LinkedArtifacts></PrivetRoute>
+            },
+            {
+                path: "/edit-artifact/:id",
+                element: <PrivetRoute><ArtifactsEditPage></ArtifactsEditPage></PrivetRoute>,
+                loader: ({params})=>  fetch(`http://localhost:5000/artifacts/${params.id}`)
+                
             },
             {
                 path: "/login",

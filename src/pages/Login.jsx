@@ -3,6 +3,7 @@ import SignInWithGoogle from "../components/SignInWithGoogle";
 import { useContext, useState } from "react";
 import { AuthContex } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 // import Swal from "sweetalert2";
 
 
@@ -31,6 +32,9 @@ const Login = () => {
     }
     return (
         <div className="pt-10 bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Login | ArtifactsTracker</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row px-20">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>
