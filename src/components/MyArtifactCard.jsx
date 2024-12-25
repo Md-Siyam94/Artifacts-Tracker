@@ -7,7 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 
-const MyArtifactCard = ({ myArtifact, }) => {
+const MyArtifactCard = ({ myArtifact, myArtifacts,setMyArtifacts }) => {
   const { user } = useContext(AuthContex)
   const navigate = useNavigate()
   const { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount, _id } = myArtifact || {}
@@ -34,6 +34,8 @@ const MyArtifactCard = ({ myArtifact, }) => {
                 icon: "success"
               });
             }
+            const remaing = myArtifacts.filter(myArtifact=> _id !== myArtifact?._id)
+            setMyArtifacts(remaing)
             navigate('/all-artifacts')
           })
       }

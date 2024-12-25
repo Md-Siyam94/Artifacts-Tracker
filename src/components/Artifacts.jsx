@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import ArtifactCard from "./ArtifactCard";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 const Artifacts = () => {
     const [artifacts, setArtifacts] = useState([])
 
 
+
     useEffect(()=>{
-        fetch("http://localhost:5000/artifacts")
-        .then(res => res.json())
-        .then(data=> {
-            setArtifacts(data)
-        })
+      axios.get("http://localhost:5000/sorted-artifacts")
+      .then(res=> {
+        setArtifacts(res.data)
+      })
     },[])
     // console.log(artifacts);
     return (
@@ -21,7 +22,7 @@ const Artifacts = () => {
             <p className="my-3 text-center w-[60%] mx-auto"> Where history comes alive! Explore rare and significant artifacts that have shaped civilizations, cultures, and traditions throughout time.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-16 mb-8 lg:grid-cols-3 gap-6 px-20">
                 {
-                    artifacts.slice(0,6).map(artifact => <ArtifactCard key={artifact.index} artifact={artifact}></ArtifactCard>)
+                    artifacts.slice(0,6).map(artifact => <ArtifactCard key={artifact.index} artifacts={artifacts } setArtifacts={setArtifacts} artifact={artifact}></ArtifactCard>)
                 }
             </div>
             <div className="w-full flex justify-center">

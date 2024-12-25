@@ -25,7 +25,7 @@ const {user} = useContext(AuthContex)
            <div className="my-10">
            {
             myArtifacts.length > 0 ?  
-                myArtifacts.map(myArtifact=>  <MyArtifactCard key={myArtifact?._id}  myArtifact={myArtifact}></MyArtifactCard>)
+                myArtifacts.map(myArtifact=>  <MyArtifactCard key={myArtifact?._id} setMyArtifacts={setMyArtifacts} myArtifacts={myArtifacts}  myArtifact={myArtifact}></MyArtifactCard>)
              : <div><h2 className="text-2xl font-semibold text-center py-36">You have didn't add any Artifact!</h2></div>
            }
            </div>

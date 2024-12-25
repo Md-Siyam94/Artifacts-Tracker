@@ -1,10 +1,22 @@
 import { useLoaderData } from "react-router-dom";
 import ArtifactCard from "../components/ArtifactCard";
 import { Helmet } from "react-helmet";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const AllArtifacts = () => {
-    const artifacts = useLoaderData()
+    const [artifacts, setArtifacts] = useState([])
+    const [search, setSearch] = useState('')
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/artifacts?search=${search}`)
+            .then(res => {
+               setArtifacts(res.data)
+            })
+    }, [search])
+
+
     return (
         <div>
             <Helmet>
@@ -12,9 +24,8 @@ const AllArtifacts = () => {
             </Helmet>
             <div className="my-10 flex gap-20 items-center">
                 <h1 className="text-3xl font-semibold ml-6 ">All Artifacts</h1>
-                {/* <p className="w-[80%] mx-auto my-2 text-center">Your gateway to exploring history through preserved treasures from ancient times to modern eras. This section showcases a diverse range of artifacts, each holding unique stories of human culture, creativity, and innovation.</p> */}
                 <label className="input input-bordered w-96 flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search" />
+                    <input type="text" name="search" className="grow" onChange={e => setSearch(e.target.value)} placeholder="Search" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"

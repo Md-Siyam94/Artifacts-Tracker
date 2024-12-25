@@ -1,8 +1,29 @@
-# React + Vite
+# Project name
+- ArtifactsTracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Link : 
+- [https://artifactstracker.netlify.app/]
 
-Currently, two official plugins are available:
+## Key feature
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Clear Menu Structure 
+- Search Bar
+- Mobile-Friendly
+- High-Quality Content
+- Product Pages
+- Hero Section
+
+## Npm packeges- aos
+- axios
+- dotenv
+- firebase
+- lottie-react 
+- motion
+- react
+- react-dom
+- react-helmet,
+- react-hot-toast
+- react-icons
+- react-router-dom
+- sweetalert2
+- swiper

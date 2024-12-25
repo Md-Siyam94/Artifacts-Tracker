@@ -32,7 +32,7 @@ const Navbar = () => {
         </li>
     </>
     return (
-        <div className="navbar bg-green-400 py-3 px-10">
+        <div className="navbar bg-base-100 border-b py-3 px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -70,6 +70,7 @@ const Navbar = () => {
                         user ? <div> <div className="dropdown dropdown-end  dropdown-hover">
                             <div tabIndex={0} role="button" className=""> <img
                                 className="h-10 w-10 rounded-full object-cover"
+                                referrerPolicy="no-referrer"
                                 src={user?.photoURL}
                                 alt="" /></div>
                             <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
