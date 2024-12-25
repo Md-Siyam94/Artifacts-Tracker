@@ -1,12 +1,45 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { BiLike } from "react-icons/bi";
-import { Link, useLoaderData } from "react-router-dom";
+import { BiLike, BiSolidLike } from "react-icons/bi";
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import { AuthContex } from "../provider/AuthProvider";
 
 
 const ArtifactDetails = () => {
-    const artifact = useLoaderData();
-    const { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount } = artifact || {}
+    const { user } = useContext(AuthContex)
+    const [artifact, setArtifact] = useState();
+    const [liked, setLiked] = useState(false);
+    const { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount, _id } = artifact || {}
 
+    const params = useParams();
+    // console.log(params.id);
+
+     useEffect(()=> {
+        axios.get(`http://localhost:5000/artifacts/${params.id}`)
+            .then(res => {
+                setArtifact(res.data)
+            })
+    },[artifact])
+
+    const handleLike = (likedId) => {
+        const email = user?.email;
+        const likeId = { likedId, email, artifactImage, artifactName, historicalContext, likeCount }
+        setLiked(true)
+
+        // console.log(id);
+
+        axios.post("http://localhost:5000/liked-artifacts", likeId)
+            .then((res) => {
+                // console.log(res.data);
+                // if (res.data.insertedId) {
+                //    const updated = artifacts.filter(artifact=> _id === artifact?._id)
+                //    setArtifacts(updated)
+
+                // }
+            })
+
+    }
     return (
         <div className="pb-20 pt-16">
             <Helmet>
@@ -36,15 +69,19 @@ const ArtifactDetails = () => {
 
                     <div className="card-actions mt-4">
                         <div className="flex gap-2 items-center">
-                            <p className=""><BiLike className="text-2xl" />
-                            </p>
+                            <button onClick={() => handleLike(_id)} className="">
+                                {
+                                    liked ? <BiSolidLike className="text-2xl" /> : <BiLike className="text-2xl" />
+                                }
+                            </button>
+
                             <p> {likeCount}</p>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

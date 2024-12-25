@@ -8,7 +8,7 @@ import { AuthContex } from "../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 
-const ArtifactCard = ({ artifact, artifacts, setArtifacts }) => {
+const ArtifactCard = ({ artifact,  }) => {
 
     // console.log(artifact)
     const { user } = useContext(AuthContex)
@@ -25,12 +25,12 @@ const ArtifactCard = ({ artifact, artifacts, setArtifacts }) => {
 
     const handleLike = (likedId) => {
         const email = user?.email;
-        const likeId = { likedId, email, artifactImage,artifactName, historicalContext }
+        const likeId = { likedId, email, artifactImage,artifactName, historicalContext, likeCount }
         setLiked(true)
 
         // console.log(id);
       
-            axios.post(`http://localhost:5000/liked-artifacts`, likeId)
+            axios.post("http://localhost:5000/liked-artifacts", likeId)
                 .then((res) => {
                     // console.log(res.data);
                     // if (res.data.insertedId) {
@@ -42,7 +42,7 @@ const ArtifactCard = ({ artifact, artifacts, setArtifacts }) => {
       
     }
     return (
-        <div data-aos="fade-up" className="rounded-lg bg-base-100 mb-10 shadow-xl">
+        <div data-aos="fade-up" className="rounded-lg bg-base-100 mb-10 shadow-xl grid">
             <figure>
                 <img
                     className="h-52 w-full rounded-lg "
@@ -55,8 +55,8 @@ const ArtifactCard = ({ artifact, artifacts, setArtifacts }) => {
 
                 </h2>
                 <p className="my-1">{historicalContext}</p>
-                <div className="card-actions justify-between items-center mt-4">
-                    <div className="flex gap-2 items-center">
+                <div className="card-actions justify-between items-center mt-4 ">
+                    <div className="flex gap-2 items-center ">
                         <button onClick={() => handleLike(_id)} className="">
                             {
                                 liked ? <BiSolidLike className="text-2xl" /> : <BiLike className="text-2xl" />

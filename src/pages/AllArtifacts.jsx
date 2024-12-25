@@ -6,15 +6,15 @@ import axios from "axios";
 
 
 const AllArtifacts = () => {
-    const [artifacts, setArtifacts] = useState([])
-    const [search, setSearch] = useState('')
+    const [artifacts, setArtifacts] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         axios.get(`http://localhost:5000/artifacts?search=${search}`)
             .then(res => {
                setArtifacts(res.data)
             })
-    }, [search])
+    }, [search,artifacts])
 
 
     return (
@@ -40,7 +40,7 @@ const AllArtifacts = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-5 my-16 lg:px-16">
                 {
-                    artifacts.map(artifact => <ArtifactCard key={artifact.idx} artifact={artifact}></ArtifactCard>)
+                    artifacts.map(artifact => <ArtifactCard key={artifact.idx} artifacts={artifacts} setArtifacts={setArtifacts} artifact={artifact}></ArtifactCard>)
                 }
             </div>
         </div>

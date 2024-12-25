@@ -14,7 +14,7 @@ const Artifacts = () => {
       .then(res=> {
         setArtifacts(res.data)
       })
-    },[])
+    },[artifacts])
     // console.log(artifacts);
     return (
         <div>

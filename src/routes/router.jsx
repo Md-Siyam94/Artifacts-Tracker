@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: "/details/:id",
                 element: <PrivetRoute><ArtifactDetails></ArtifactDetails></PrivetRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/artifacts/${params.id}`)
+                // loader: ({params})=> fetch(`http://localhost:5000/artifacts/${params.id}`)
             },
             {
                 path: "/add-artifacts",

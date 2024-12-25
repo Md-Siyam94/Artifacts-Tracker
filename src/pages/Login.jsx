@@ -4,6 +4,8 @@ import { useContext, useState } from "react";
 import { AuthContex } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
+import login from '../../public/login.json'
 // import Swal from "sweetalert2";
 
 
@@ -36,12 +38,9 @@ const Login = () => {
                 <title>Login | ArtifactsTracker</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row px-20">
-                <div className="text-center lg:text-left">
+                <div className="text-center lg:text-left ">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
-                    </p>
+                    <Lottie animationData={login} className="h-96 w-96"></Lottie>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <form onSubmit={handleLogin} className="card-body">
