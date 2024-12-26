@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase_init";
+import axios from "axios";
 
 
 export const AuthContex = createContext();
@@ -37,10 +38,28 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-
-            setLoading(false);
             console.log('cctv lagaisi', currentUser);
+
+            if(currentUser?.email){
+                const user = {email: currentUser?.email}
+                setUser(currentUser);
+                axios.post("http://localhost:5000/jwt", user , {withCredentials: true})
+                .then((res)=>{
+                    setLoading(false);
+                    console.log(res.data);
+                })
+            }
+            else{
+                
+                axios.post("http://localhost:5000/logoutjwt", {}, {withCredentials: true})
+                    .then((res)=>{
+                        setLoading(false);
+                        console.log('log out', res.data);
+                    })
+            }
+
+
+           
         })
 
         return () => unSubscribe()

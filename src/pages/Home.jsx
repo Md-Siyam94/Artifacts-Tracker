@@ -1,4 +1,5 @@
 import Artifacts from "../components/Artifacts";
+import Exhibits from "../components/Exhibits";
 import Hero from "../components/Hero";
 import TourMuseum from "../components/TourMuseum";
 
@@ -14,6 +15,9 @@ const Home = () => {
             </section>
             <section>
                 <TourMuseum></TourMuseum>
+            </section>
+            <section>
+                <Exhibits></Exhibits>
             </section>
         </div>
     );

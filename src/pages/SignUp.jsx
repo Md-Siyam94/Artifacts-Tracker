@@ -14,16 +14,23 @@ const SignUp = () => {
     const {user, signUpUser, updateUserProfile } = useContext(AuthContex)
     const navigate = useNavigate()
     const [showPass, setShowPass] = useState(false)
-
+    const [error, setError] = useState("")
+    
 
     const handleSignUp = (e) => {
         e.preventDefault();
+        setError("")
 
         const form = new FormData(e.target)
         const name = form.get('name');
         const email = form.get('email');
         const photoURL = form.get('photoURL');
         const password = form.get('password');
+        
+        const passvalidation =/^(?=.*[a-z])(?=.*[A-Z]).*$/;
+        if (!passvalidation.test(password)) {
+            return setError("Password have must one uppercase and one lowercase charecter")
+        }
 
         // const updateUser = { name , photoURL };
         // console.log(updateUser)
@@ -33,11 +40,13 @@ const SignUp = () => {
                 updateUserProfile({displayName: name , photoURL: photoURL})
                     .then(() => {
                           navigate("/")
+                        //   console.log(user?.displayName)
+
                     })
-                    .catch(err => console.log("error from updateProfile", err.message))
+                    .catch(err =>  setError(err.code))
             })
             .catch(err => {
-                console.log('error from signup', err.message)
+                setError(err.code.slice(5))
             })
     }
     return (
@@ -85,6 +94,9 @@ const SignUp = () => {
                             <label className="label">
                                 <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
+                        </div>
+                        <div>
+                            <p className="text-red-600">{error}</p>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign up</button>

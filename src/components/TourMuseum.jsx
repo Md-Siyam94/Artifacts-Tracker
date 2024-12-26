@@ -29,7 +29,7 @@ const TourMuseum = () => {
                 <button className='btn px-8 bg-yellow-400 hover:bg-yellow-500'>Book For Visit</button>
 
             </div>
-            <div data-aos="fade-up" className="flex-1 mt-32 p-16 ">
+            <div data-aos="fade-up" className="flex-1 lg:mt-32 p-16 ">
                 <p className='border-2 border-yellow-500 my-6 w-36 mx-auto  '></p>
                 <h3 className='text-4xl font-thin text-center'>Museum Artifacts</h3>
                 <p className='text-2xl my-3 mb-8 font-extralight'>Museums serve as guardians of history, preserving artifacts that offer glimpses into the lives, cultures, and innovations of ancient civilizations.</p>

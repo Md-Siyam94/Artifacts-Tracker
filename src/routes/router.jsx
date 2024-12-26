@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        //   errorElement: <Error></Error>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "",
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             {
                 path: "/my-artifacts",
                 element: <PrivetRoute><MyArtifacts></MyArtifacts></PrivetRoute>
-               
+
             },
             {
                 path: "/linked-artifacts",
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
             {
                 path: "/edit-artifact/:id",
                 element: <PrivetRoute><ArtifactsEditPage></ArtifactsEditPage></PrivetRoute>,
-                loader: ({params})=>  fetch(`http://localhost:5000/artifacts/${params.id}`)
-                
+                loader: ({ params }) => fetch(`http://localhost:5000/artifacts/${params.id}`)
+
             },
             {
                 path: "/login",

@@ -10,7 +10,7 @@ const LikedArtifacts = () => {
     const [artifacts, setArtifacts] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/liked/${user?.email}`)
+        axios.get(`http://localhost:5000/liked/${user?.email}`, {withCredentials: true})
             .then(res => {
                 setArtifacts(res.data)
             })

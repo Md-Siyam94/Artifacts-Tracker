@@ -40,7 +40,7 @@ const AllArtifacts = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-5 my-16 lg:px-16">
                 {
-                    artifacts.map(artifact => <ArtifactCard key={artifact.idx} artifacts={artifacts} setArtifacts={setArtifacts} artifact={artifact}></ArtifactCard>)
+                    artifacts.map(artifact => <ArtifactCard key={artifact?._id} artifacts={artifacts} setArtifacts={setArtifacts} artifact={artifact}></ArtifactCard>)
                 }
             </div>
         </div>

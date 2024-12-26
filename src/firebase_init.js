@@ -13,12 +13,7 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_storageBucket,
   messagingSenderId: import.meta.env.VITE_messagingSenderId,
   appId: import.meta.env.VITE_appId
-// apiKey: "AIzaSyAAC0NItQd9LHNTRZSk7coLYJqWfMBg8iQ",
-// authDomain: "artifacts-tracker-d3d13.firebaseapp.com",
-// projectId: "artifacts-tracker-d3d13",
-// storageBucket: "artifacts-tracker-d3d13.firebasestorage.app",
-// messagingSenderId: "1043667095802",
-// appId: "1:1043667095802:web:9882b10377724005883943"
+
 };
 
 // Initialize Firebase

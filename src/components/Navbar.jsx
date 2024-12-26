@@ -21,9 +21,9 @@ const Navbar = () => {
         <li><Link to={"/"}>Home</Link></li>
         <li><Link to={"/all-artifacts"}>All Artifacts</Link></li>
         <li><Link to={"/add-artifacts"}>Add Artifacts</Link></li>
-        <li><Link to={"/add-artifacts"}><div className="dropdown dropdown-end  dropdown-hover">
+        <li><Link to={"/add-artifacts"}><div className="dropdown dropdown-end  dropdown-hover z-50">
             <div tabIndex={0} role="button" className=" ">My profile</div>
-            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-56 p-2 shadow">
+            <ul tabIndex={0} className="dropdown-content menu bg-base-100    w-56 p-2 shadow">
                 <li><Link to={"/my-artifacts"}>My Artifacts</Link></li>
                 <li><Link to={"/linked-artifacts"}>Liked Artifacts</Link></li>
             </ul>
@@ -51,7 +51,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
                 </div>
@@ -67,13 +67,13 @@ const Navbar = () => {
 
                 <div>
                     {
-                        user ? <div> <div className="dropdown dropdown-end  dropdown-hover">
+                        user ? <div> <div className="dropdown dropdown-end  dropdown-hover z-50">
                             <div tabIndex={0} role="button" className=""> <img
                                 className="h-10 w-10 rounded-full object-cover"
                                 referrerPolicy="no-referrer"
                                 src={user?.photoURL}
                                 alt="" /></div>
-                            <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                            <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100  z-[1] w-52 p-2 shadow">
                                 <li><Link>{displayName}</Link></li>
                                 <li><button onClick={handleLogOut}>Log out</button></li>
                             </ul>

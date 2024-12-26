@@ -12,17 +12,17 @@ const AddArtifacts = () => {
     const handleAddArtifact = (e) => {
         e.preventDefault();
 
-        const form = new FormData(e.target);
-        const artifactName = form.get('artifactName');
-        const artifactImage = form.get('artifactImage');
-        const artifactType = form.get('artifactType');
-        const historicalContext = form.get('historicalContext');
-        const createdAt = form.get('createdAt');
-        const discoveredAt = form.get('discoveredAt');
-        const discoveredBy = form.get('discoveredBy');
-        const presentLocation = form.get('presentLocation');
-        const adderName = form.get('adderName');
-        const adderEmail = form.get('adderEmail');
+        const form = e.target
+        const artifactName = form.artifactName.value
+        const artifactImage = form.artifactImage.value
+        const artifactType = form.artifactType.value
+        const historicalContext = form.historicalContext.value
+        const createdAt = form.createdAt.value
+        const discoveredAt = form.discoveredAt.value
+        const discoveredBy = form.discoveredBy.value
+        const presentLocation = form.presentLocation.value
+        const adderName = form.adderName.value
+        const adderEmail = form.adderEmail.value
         const likeCount = 0
 
         const artifact = { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount };
@@ -41,7 +41,7 @@ const AddArtifacts = () => {
             
               });
            }
-           
+           form.reset();
            
         })
         
