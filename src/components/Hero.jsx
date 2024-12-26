@@ -19,18 +19,7 @@ const Hero = () => {
                 style={
                     { height: "550px", width: "100%", }
                 }
-                // breakpoints={{
-                   
-                //     // when window width is >= 640px
-                //     764: {
-                        
-                //             height: 600,
-                             
-                        
-                //     },
-                //     // when window width is >= 1024px
-                    
-                //   }}
+               
                 
                 slidesPerView={1}
                 spaceBetween={30}

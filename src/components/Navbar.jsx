@@ -21,7 +21,7 @@ const Navbar = () => {
         <li><Link to={"/"}>Home</Link></li>
         <li><Link to={"/all-artifacts"}>All Artifacts</Link></li>
         <li><Link to={"/add-artifacts"}>Add Artifacts</Link></li>
-        <li><Link to={"/add-artifacts"}><div className="dropdown dropdown-end  dropdown-hover z-50">
+        <li><Link to={"/add-artifacts"}><div className="dropdown  dropdown-end  dropdown-hover z-50">
             <div tabIndex={0} role="button" className=" ">My profile</div>
             <ul tabIndex={0} className="dropdown-content menu bg-base-100    w-56 p-2 shadow">
                 <li><Link to={"/my-artifacts"}>My Artifacts</Link></li>

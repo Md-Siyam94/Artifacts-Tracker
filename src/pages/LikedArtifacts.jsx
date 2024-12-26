@@ -16,7 +16,7 @@ const LikedArtifacts = () => {
             })
     }, [])
 
-    console.log(artifacts);
+    // console.log(artifacts);
     return (
         <div>
             <Helmet>
@@ -25,7 +25,7 @@ const LikedArtifacts = () => {
             <h2 className="pl-10 py-10 font-semibold text-3xl"> Liked Artifacts</h2>
             <div>
                 {
-                    artifacts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-5 my-16 lg:px-16">
+                    artifacts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-5 my-16 px-16">
                         {
                             artifacts.map(artifact => <ArtifactCard key={artifact.idx} artifact={artifact}></ArtifactCard>)
                         }

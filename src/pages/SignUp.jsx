@@ -26,7 +26,7 @@ const SignUp = () => {
         const email = form.get('email');
         const photoURL = form.get('photoURL');
         const password = form.get('password');
-        
+
         const passvalidation =/^(?=.*[a-z])(?=.*[A-Z]).*$/;
         if (!passvalidation.test(password)) {
             return setError("Password have must one uppercase and one lowercase charecter")
@@ -43,7 +43,7 @@ const SignUp = () => {
                         //   console.log(user?.displayName)
 
                     })
-                    .catch(err =>  setError(err.code))
+                    .catch(err => setError(err.code))
             })
             .catch(err => {
                 setError(err.code.slice(5))

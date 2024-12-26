@@ -15,7 +15,7 @@ const {user} = useContext(AuthContex)
             setMyArtifacts(res.data)
         })
     },[]);
-    console.log(myArtifacts);
+    // console.log(myArtifacts);
     return (
         <div className="py-10 ">
             <Helmet>

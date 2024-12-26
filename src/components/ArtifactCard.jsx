@@ -31,13 +31,8 @@ const ArtifactCard = ({ artifact,  }) => {
         // console.log(id);
       
             axios.post("https://historical-artifacts-server-nine.vercel.app/liked-artifacts", likeId)
-                .then((res) => {
-                    // console.log(res.data);
-                    // if (res.data.insertedId) {
-                    //    const updated = artifacts.filter(artifact=> _id === artifact?._id)
-                    //    setArtifacts(updated)
-
-                    // }
+                .then(() => {
+                    
                 })
       
     }

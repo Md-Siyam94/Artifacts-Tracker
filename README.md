@@ -13,7 +13,8 @@
 - Product Pages
 - Hero Section
 
-## Npm packeges- aos
+## Npm packeges
+- aos
 - axios
 - dotenv
 - firebase
