@@ -31,7 +31,7 @@ const ArtifactsEditPage = () => {
 
       const updatedData = {artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail};
 
-      axios.put(`http://localhost:5000/artifacts/${_id}`, updatedData)
+      axios.put(`https://historical-artifacts-server-nine.vercel.app/artifacts/${_id}`, updatedData)
       .then(res=> {
        if(res.data.modifiedCount > 0){
         Swal.fire({

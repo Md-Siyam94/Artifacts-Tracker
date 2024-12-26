@@ -28,7 +28,7 @@ const AddArtifacts = () => {
         const artifact = { artifactName, artifactImage, artifactType, historicalContext, createdAt, discoveredAt, discoveredBy, presentLocation, adderName, adderEmail, likeCount };
 
         console.log(artifact);
-        axios.post("http://localhost:5000/artifacts", artifact )
+        axios.post("https://historical-artifacts-server-nine.vercel.app/artifacts", artifact )
         .then(res=> {
             console.log('artifact save on database',res.data);
            if(res.data?.insertedId){

@@ -16,7 +16,7 @@ const ArtifactDetails = () => {
     // console.log(params.id);
 
      useEffect(()=> {
-        axios.get(`http://localhost:5000/artifacts/${params.id}`)
+        axios.get(`https://historical-artifacts-server-nine.vercel.app/artifacts/${params.id}`)
             .then(res => {
                 setArtifact(res.data)
             })
@@ -29,7 +29,7 @@ const ArtifactDetails = () => {
 
         // console.log(id);
 
-        axios.post("http://localhost:5000/liked-artifacts", likeId)
+        axios.post("https://historical-artifacts-server-nine.vercel.app/liked-artifacts", likeId)
             .then((res) => {
                 // console.log(res.data);
                 // if (res.data.insertedId) {

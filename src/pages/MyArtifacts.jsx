@@ -10,7 +10,7 @@ const MyArtifacts = () => {
 const {user} = useContext(AuthContex)
     const [myArtifacts, setMyArtifacts] = useState([])
     useState(()=>{
-        axios.get(`http://localhost:5000/artifacts?email=${user?.email}`)
+        axios.get(`https://historical-artifacts-server-nine.vercel.app/artifacts?email=${user?.email}`)
         .then(res=>{
             setMyArtifacts(res.data)
         })

@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
             if(currentUser?.email){
                 const user = {email: currentUser?.email}
                 setUser(currentUser);
-                axios.post("http://localhost:5000/jwt", user , {withCredentials: true})
+                axios.post("https://historical-artifacts-server-nine.vercel.app/jwt", user , {withCredentials: true})
                 .then((res)=>{
                     setLoading(false);
                     console.log(res.data);
@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
             }
             else{
                 
-                axios.post("http://localhost:5000/logoutjwt", {}, {withCredentials: true})
+                axios.post("https://historical-artifacts-server-nine.vercel.app/logoutjwt", {}, {withCredentials: true})
                     .then((res)=>{
                         setLoading(false);
                         console.log('log out', res.data);

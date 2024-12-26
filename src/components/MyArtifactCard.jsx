@@ -25,7 +25,7 @@ const MyArtifactCard = ({ myArtifact, myArtifacts,setMyArtifacts }) => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        axios.delete(`http://localhost:5000/artifacts/${_id}`)
+        axios.delete(`https://historical-artifacts-server-nine.vercel.app/artifacts/${_id}`)
           .then((result) => {
             if (result.data.deleteCount > 0) {
               Swal.fire({

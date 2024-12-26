@@ -10,7 +10,7 @@ const Artifacts = () => {
 
 
     useEffect(()=>{
-      axios.get("http://localhost:5000/sorted-artifacts")
+      axios.get("https://historical-artifacts-server-nine.vercel.app/sorted-artifacts")
       .then(res=> {
         setArtifacts(res.data)
       })

@@ -27,13 +27,13 @@ const router = createBrowserRouter([
             {
                 path: "/all-artifacts",
                 element: <AllArtifacts></AllArtifacts>,
-                // loader: ()=> fetch('http://localhost:5000/artifacts')
+                // loader: ()=> fetch('https://historical-artifacts-server-nine.vercel.app/artifacts')
 
             },
             {
                 path: "/details/:id",
                 element: <PrivetRoute><ArtifactDetails></ArtifactDetails></PrivetRoute>,
-                // loader: ({params})=> fetch(`http://localhost:5000/artifacts/${params.id}`)
+                // loader: ({params})=> fetch(`https://historical-artifacts-server-nine.vercel.app/artifacts/${params.id}`)
             },
             {
                 path: "/add-artifacts",
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: "/edit-artifact/:id",
                 element: <PrivetRoute><ArtifactsEditPage></ArtifactsEditPage></PrivetRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/artifacts/${params.id}`)
+                loader: ({ params }) => fetch(`https://historical-artifacts-server-nine.vercel.app/artifacts/${params.id}`)
 
             },
             {

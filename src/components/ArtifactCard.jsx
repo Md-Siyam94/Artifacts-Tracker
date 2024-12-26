@@ -30,7 +30,7 @@ const ArtifactCard = ({ artifact,  }) => {
 
         // console.log(id);
       
-            axios.post("http://localhost:5000/liked-artifacts", likeId)
+            axios.post("https://historical-artifacts-server-nine.vercel.app/liked-artifacts", likeId)
                 .then((res) => {
                     // console.log(res.data);
                     // if (res.data.insertedId) {

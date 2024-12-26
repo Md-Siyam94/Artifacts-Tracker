@@ -10,7 +10,7 @@ const AllArtifacts = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/artifacts?search=${search}`)
+        axios.get(`https://historical-artifacts-server-nine.vercel.app/artifacts?search=${search}`)
             .then(res => {
                setArtifacts(res.data)
             })
