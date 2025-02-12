@@ -1,18 +1,21 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContex } from "../provider/AuthProvider";
 import { GiCompass } from "react-icons/gi";
 import Theme from "./Theme";
 
 const Navbar = () => {
     const { user, logOutUser } = useContext(AuthContex);
+    const navigate = useNavigate()
     const { displayName } = user || {}
 
 
 
     const handleLogOut = () => {
         logOutUser()
-            .then(() => { })
+            .then(() => {
+                navigate("/")
+            })
             .catch(err => {
                 console.log('error from logout', err.message)
             })

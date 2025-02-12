@@ -48,7 +48,7 @@ const AddArtifacts = () => {
         
     }
     return (
-        <div className="my-16">
+        <div className="py-28">
             <Helmet>
                 <title>Add artifacts | ArtifactsTracker</title>
             </Helmet>

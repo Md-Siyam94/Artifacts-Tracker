@@ -33,7 +33,7 @@ const Login = () => {
             })
     }
     return (
-        <div className="pt-10 bg-base-200 min-h-screen">
+        <div className="pt-20 bg-base-200 min-h-screen">
             <Helmet>
                 <title>Login | ArtifactsTracker</title>
             </Helmet>

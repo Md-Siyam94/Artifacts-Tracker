@@ -50,7 +50,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className="pt-10 bg-base-200 min-h-screen pb-20">
+        <div className="pt-20 bg-base-200 min-h-screen pb-20">
             <Helmet>
                 <title>Sign up | ArtifactsTracker</title>
             </Helmet>
