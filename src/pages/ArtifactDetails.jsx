@@ -41,7 +41,7 @@ const ArtifactDetails = () => {
 
     }
     return (
-        <div className="pb-20 pt-16">
+        <div className="pb-20 pt-28">
             <Helmet>
                 <title>Artifacts details | ArtifactsTracker</title>
             </Helmet>

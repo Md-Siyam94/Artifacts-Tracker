@@ -18,8 +18,8 @@ const Artifacts = () => {
     // console.log(artifacts);
     return (
         <div>
-            <h2 className="text-5xl mt-28 text-center font-semibold">Featured Artifacts Collection</h2>
-            <p className="my-3 text-center w-[60%] mx-auto"> Where history comes alive! Explore rare and significant artifacts that have shaped civilizations, cultures, and traditions throughout time.</p>
+            <h2 className="text-6xl mt-28 text-center text-success font-bold">Featured Artifacts Collection</h2>
+            <p className="my-3 text-center w-[60%] mx-auto opacity-70"> Where history comes alive! Explore rare and significant artifacts that have shaped civilizations, cultures, and traditions throughout time.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-16 mb-8 lg:grid-cols-3 gap-6 px-20">
                 {
                     artifacts.slice(0,6).map(artifact => <ArtifactCard key={artifact?._id} artifacts={artifacts } setArtifacts={setArtifacts} artifact={artifact}></ArtifactCard>)

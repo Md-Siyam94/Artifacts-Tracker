@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContex } from "../provider/AuthProvider";
 import { GiCompass } from "react-icons/gi";
+import Theme from "./Theme";
 
 const Navbar = () => {
     const { user, logOutUser } = useContext(AuthContex);
-    const {displayName} = user || {}
+    const { displayName } = user || {}
 
-   
+
 
     const handleLogOut = () => {
         logOutUser()
@@ -20,19 +21,24 @@ const Navbar = () => {
     const links = <>
         <li><Link to={"/"}>Home</Link></li>
         <li><Link to={"/all-artifacts"}>All Artifacts</Link></li>
-        <li><Link to={"/add-artifacts"}>Add Artifacts</Link></li>
-        <li><Link to={"/add-artifacts"}><div className="dropdown  dropdown-end  dropdown-hover z-50">
-            <div tabIndex={0} role="button" className=" ">My profile</div>
-            <ul tabIndex={0} className="dropdown-content menu bg-base-100    w-56 p-2 shadow">
-                <li><Link to={"/my-artifacts"}>My Artifacts</Link></li>
-                <li><Link to={"/linked-artifacts"}>Liked Artifacts</Link></li>
-            </ul>
-        </div>
-        </Link>
-        </li>
+        <li><Link to={"/about-us"}>About Us</Link></li>
+        {
+            user && <>
+                <li><Link to={"/add-artifacts"}>Add Artifacts</Link></li>
+                <li><Link to={"/my-artifacts"}><div className="dropdown  dropdown-end  dropdown-hover z-50">
+                    <div tabIndex={0} role="button" className=" ">My profile</div>
+                    <ul tabIndex={0} className="dropdown-content menu bg-base-100    w-56 p-2 shadow">
+                        <li><Link to={"/my-artifacts"}>My Artifacts</Link></li>
+                        <li><Link to={"/linked-artifacts"}>Liked Artifacts</Link></li>
+                    </ul>
+                </div>
+                </Link>
+                </li>
+            </>
+        }
     </>
     return (
-        <div className="navbar bg-base-100 border-b py-3 px-10">
+        <div className="navbar bg-success bg-opacity-80 fixed z-50 py-3 px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -58,13 +64,15 @@ const Navbar = () => {
                 <Link to={"/"} className=" flex gap-2 font-semibold text-3xl items-center"><GiCompass className="text-5xl text-red-600" />ArtifactsTracker</Link>
             </div>
 
-            <div className="navbar-end gap-2">
+            <div className="navbar-end gap-3">
                 <div className="navbar-center hidden lg:flex ">
                     <ul className="menu  menu-horizontal px-1 font-semibold">
                         {links}
                     </ul>
                 </div >
-
+                <div className="mr-4">
+                    <Theme></Theme>
+                </div>
                 <div>
                     {
                         user ? <div> <div className="dropdown dropdown-end  dropdown-hover z-50">

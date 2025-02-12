@@ -37,7 +37,7 @@ const ArtifactCard = ({ artifact,  }) => {
       
     }
     return (
-        <div data-aos="fade-up" className="rounded-lg bg-base-100 mb-10 shadow-xl grid">
+        <div data-aos="fade-up" className="rounded-lg bg-base-100  mb-10 shadow-xl grid">
             <figure>
                 <img
                     className="h-52 w-full rounded-lg "

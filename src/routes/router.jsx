@@ -13,6 +13,7 @@ import PrivetRoute from "../provider/PrivetRoute";
 import ArtifactDetails from "../pages/ArtifactDetails";
 import Error from "../pages/Error";
 import ArtifactsEditPage from "../pages/ArtifactsEditPage";
+import AboutUs from "../pages/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,12 @@ const router = createBrowserRouter([
             {
                 path: "/all-artifacts",
                 element: <AllArtifacts></AllArtifacts>,
+                // loader: ()=> fetch('https://historical-artifacts-server-nine.vercel.app/artifacts')
+
+            },
+            {
+                path: "/about-us",
+                element: <AboutUs></AboutUs>,
                 // loader: ()=> fetch('https://historical-artifacts-server-nine.vercel.app/artifacts')
 
             },

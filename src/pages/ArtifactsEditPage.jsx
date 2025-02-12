@@ -46,7 +46,7 @@ const ArtifactsEditPage = () => {
       })
     }
     return (
-        <div className="my-10">
+        <div className="pt-28">
             <Helmet>
                 <title>Add artifacts | ArtifactsTracker</title>
             </Helmet>

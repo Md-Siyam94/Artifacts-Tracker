@@ -22,7 +22,7 @@ const AllArtifacts = () => {
             <Helmet>
                 <title>All artifacts | ArtifactsTracker</title>
             </Helmet>
-            <div className="my-10 flex gap-20 items-center">
+            <div className=" pt-28 flex gap-20 items-center">
                 <h1 className="text-3xl font-semibold ml-6 ">All Artifacts</h1>
                 <label className="input input-bordered w-96 flex items-center gap-2">
                     <input type="text" name="search" className="grow" onChange={e => setSearch(e.target.value)} placeholder="Search" />
@@ -37,6 +37,7 @@ const AllArtifacts = () => {
                             clipRule="evenodd" />
                     </svg>
                 </label>
+                
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 gap-5 my-16 px-16">
                 {
